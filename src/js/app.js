@@ -78,3 +78,37 @@ window.addEventListener('load', () => {
       });
   }
 });
+
+
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', event => {
+  // Si no quieres que aparezca el banner de añadir a homescreen
+  /* event.preventDefault();
+  return false; */
+
+
+  //Le da la opcion al usuario de instalar la aplicacion en la homescreen por medio de una accion
+   // Prevent Chrome 67 and earlier from automatically showing the prompt
+   event.preventDefault();
+
+   console.log('beforeinstallprompt fired');
+
+   // Stash the event so it can be triggered later.
+   deferredPrompt = event;
+
+   return false;
+
+
+
+  // Determine the user's choice - returned as a Promise
+  /*event.userChoice.then(result => {
+    console.log(result.outcome);
+
+    // Based on the user's choice, decide how to proceed
+    if(result.outcome == 'dismissed') {
+        // Send to analytics
+    } else {
+        // Send to analytics
+    }
+  });*/
+});
